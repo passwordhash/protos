@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "passwordhash.gossov1;gossov1";
+
+service Auth {
+  rpc Register (RegisterRequest) returns (RegisterResponse);
+  rpc Login (LoginRequest) returns (LoginResponse);
+  rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
+}
+
+message RegisterRequest {
+  string email = 1;
+  string password = 2;
+  reserved 3 to 5;
+}
+
+message RegisterResponse {
+  int64 user_id = 1;
+  reserved 2 to 5;
+}
+
+message LoginRequest {
+  string email = 1;
+  string password = 2;
+  int32 app_id = 3;  // ID of the application requesting the login.
+  reserved 4 to 5;
+}
+
+message LoginResponse {
+  string token = 1;  // JWT Access Token.
+  reserved 2 to 5;
+}
+
+message IsAdminRequest {
+  int64 user_id = 1;
+  reserved 2 to 5;
+}
+
+message IsAdminResponse {
+  bool is_admin = 1;
+  reserved 2 to 5;
+}
