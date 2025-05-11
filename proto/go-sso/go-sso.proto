@@ -7,7 +7,6 @@ option go_package = "passwordhash.gossov1;gossov1";
 service Auth {
   rpc Register (RegisterRequest) returns (RegisterResponse);
   rpc Login (LoginRequest) returns (LoginResponse);
-  rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
 }
 
 message RegisterRequest {
@@ -17,7 +16,7 @@ message RegisterRequest {
 }
 
 message RegisterResponse {
-  int64 user_id = 1;
+  string user_uuid = 1;
   reserved 2 to 5;
 }
 
@@ -30,15 +29,5 @@ message LoginRequest {
 
 message LoginResponse {
   string token = 1;  // JWT Access Token.
-  reserved 2 to 5;
-}
-
-message IsAdminRequest {
-  int64 user_id = 1;
-  reserved 2 to 5;
-}
-
-message IsAdminResponse {
-  bool is_admin = 1;
   reserved 2 to 5;
 }
