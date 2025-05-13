@@ -221,6 +221,94 @@ func (x *LoginResponse) GetToken() string {
 	return ""
 }
 
+type SigningKeyRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AppName       string                 `protobuf:"bytes,1,opt,name=app_name,json=appName,proto3" json:"app_name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SigningKeyRequest) Reset() {
+	*x = SigningKeyRequest{}
+	mi := &file_go_sso_go_sso_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SigningKeyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SigningKeyRequest) ProtoMessage() {}
+
+func (x *SigningKeyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_go_sso_go_sso_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SigningKeyRequest.ProtoReflect.Descriptor instead.
+func (*SigningKeyRequest) Descriptor() ([]byte, []int) {
+	return file_go_sso_go_sso_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *SigningKeyRequest) GetAppName() string {
+	if x != nil {
+		return x.AppName
+	}
+	return ""
+}
+
+type SigningKeyResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SigningKey    string                 `protobuf:"bytes,1,opt,name=signing_key,json=signingKey,proto3" json:"signing_key,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SigningKeyResponse) Reset() {
+	*x = SigningKeyResponse{}
+	mi := &file_go_sso_go_sso_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SigningKeyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SigningKeyResponse) ProtoMessage() {}
+
+func (x *SigningKeyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_go_sso_go_sso_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SigningKeyResponse.ProtoReflect.Descriptor instead.
+func (*SigningKeyResponse) Descriptor() ([]byte, []int) {
+	return file_go_sso_go_sso_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *SigningKeyResponse) GetSigningKey() string {
+	if x != nil {
+		return x.SigningKey
+	}
+	return ""
+}
+
 var File_go_sso_go_sso_proto protoreflect.FileDescriptor
 
 const file_go_sso_go_sso_proto_rawDesc = "" +
@@ -236,10 +324,17 @@ const file_go_sso_go_sso_proto_rawDesc = "" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x15\n" +
 	"\x06app_id\x18\x03 \x01(\x05R\x05appIdJ\x04\b\x04\x10\x06\"+\n" +
 	"\rLoginResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05tokenJ\x04\b\x02\x10\x062s\n" +
+	"\x05token\x18\x01 \x01(\tR\x05tokenJ\x04\b\x02\x10\x06\"4\n" +
+	"\x11SigningKeyRequest\x12\x19\n" +
+	"\bapp_name\x18\x01 \x01(\tR\aappNameJ\x04\b\x02\x10\x06\";\n" +
+	"\x12SigningKeyResponse\x12\x1f\n" +
+	"\vsigning_key\x18\x01 \x01(\tR\n" +
+	"signingKeyJ\x04\b\x02\x10\x062\xb4\x01\n" +
 	"\x04Auth\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
-	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponseB\x1eZ\x1cpasswordhash.gossov1;gossov1b\x06proto3"
+	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x12?\n" +
+	"\n" +
+	"SigningKey\x12\x17.auth.SigningKeyRequest\x1a\x18.auth.SigningKeyResponseB\x1eZ\x1cpasswordhash.gossov1;gossov1b\x06proto3"
 
 var (
 	file_go_sso_go_sso_proto_rawDescOnce sync.Once
@@ -253,20 +348,24 @@ func file_go_sso_go_sso_proto_rawDescGZIP() []byte {
 	return file_go_sso_go_sso_proto_rawDescData
 }
 
-var file_go_sso_go_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_go_sso_go_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_go_sso_go_sso_proto_goTypes = []any{
-	(*RegisterRequest)(nil),  // 0: auth.RegisterRequest
-	(*RegisterResponse)(nil), // 1: auth.RegisterResponse
-	(*LoginRequest)(nil),     // 2: auth.LoginRequest
-	(*LoginResponse)(nil),    // 3: auth.LoginResponse
+	(*RegisterRequest)(nil),    // 0: auth.RegisterRequest
+	(*RegisterResponse)(nil),   // 1: auth.RegisterResponse
+	(*LoginRequest)(nil),       // 2: auth.LoginRequest
+	(*LoginResponse)(nil),      // 3: auth.LoginResponse
+	(*SigningKeyRequest)(nil),  // 4: auth.SigningKeyRequest
+	(*SigningKeyResponse)(nil), // 5: auth.SigningKeyResponse
 }
 var file_go_sso_go_sso_proto_depIdxs = []int32{
 	0, // 0: auth.Auth.Register:input_type -> auth.RegisterRequest
 	2, // 1: auth.Auth.Login:input_type -> auth.LoginRequest
-	1, // 2: auth.Auth.Register:output_type -> auth.RegisterResponse
-	3, // 3: auth.Auth.Login:output_type -> auth.LoginResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	4, // 2: auth.Auth.SigningKey:input_type -> auth.SigningKeyRequest
+	1, // 3: auth.Auth.Register:output_type -> auth.RegisterResponse
+	3, // 4: auth.Auth.Login:output_type -> auth.LoginResponse
+	5, // 5: auth.Auth.SigningKey:output_type -> auth.SigningKeyResponse
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -283,7 +382,7 @@ func file_go_sso_go_sso_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_go_sso_go_sso_proto_rawDesc), len(file_go_sso_go_sso_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

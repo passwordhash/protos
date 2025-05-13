@@ -7,6 +7,7 @@ option go_package = "passwordhash.gossov1;gossov1";
 service Auth {
   rpc Register (RegisterRequest) returns (RegisterResponse);
   rpc Login (LoginRequest) returns (LoginResponse);
+  rpc SigningKey(SigningKeyRequest) returns (SigningKeyResponse);
 }
 
 message RegisterRequest {
@@ -30,4 +31,14 @@ message LoginRequest {
 message LoginResponse {
   string token = 1;  // JWT Access Token.
   reserved 2 to 5;
+}
+
+message SigningKeyRequest {
+	string app_name = 1;
+	reserved 2 to 5;
+}
+
+message SigningKeyResponse {
+	string signing_key = 1;
+	reserved 2 to 5;
 }
