@@ -121,7 +121,7 @@ type LoginRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
-	AppId         int32                  `protobuf:"varint,3,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"` // ID of the application requesting the login.
+	AppName       string                 `protobuf:"bytes,3,opt,name=appName,proto3" json:"appName,omitempty"` // App name of the application requesting the login.
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -170,11 +170,11 @@ func (x *LoginRequest) GetPassword() string {
 	return ""
 }
 
-func (x *LoginRequest) GetAppId() int32 {
+func (x *LoginRequest) GetAppName() string {
 	if x != nil {
-		return x.AppId
+		return x.AppName
 	}
-	return 0
+	return ""
 }
 
 type LoginResponse struct {
@@ -267,7 +267,7 @@ func (x *SigningKeyRequest) GetAppName() string {
 
 type SigningKeyResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	SigningKey    []byte                 `protobuf:"bytes,1,opt,name=signing_key,json=signingKey,proto3" json:"signing_key,omitempty"`
+	SigningKey    string                 `protobuf:"bytes,1,opt,name=signing_key,json=signingKey,proto3" json:"signing_key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -302,11 +302,11 @@ func (*SigningKeyResponse) Descriptor() ([]byte, []int) {
 	return file_go_sso_go_sso_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *SigningKeyResponse) GetSigningKey() []byte {
+func (x *SigningKeyResponse) GetSigningKey() string {
 	if x != nil {
 		return x.SigningKey
 	}
-	return nil
+	return ""
 }
 
 var File_go_sso_go_sso_proto protoreflect.FileDescriptor
@@ -318,17 +318,17 @@ const file_go_sso_go_sso_proto_rawDesc = "" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpasswordJ\x04\b\x03\x10\x06\"5\n" +
 	"\x10RegisterResponse\x12\x1b\n" +
-	"\tuser_uuid\x18\x01 \x01(\tR\buserUuidJ\x04\b\x02\x10\x06\"]\n" +
+	"\tuser_uuid\x18\x01 \x01(\tR\buserUuidJ\x04\b\x02\x10\x06\"`\n" +
 	"\fLoginRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x15\n" +
-	"\x06app_id\x18\x03 \x01(\x05R\x05appIdJ\x04\b\x04\x10\x06\"+\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x18\n" +
+	"\aappName\x18\x03 \x01(\tR\aappNameJ\x04\b\x04\x10\x06\"+\n" +
 	"\rLoginResponse\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05tokenJ\x04\b\x02\x10\x06\"4\n" +
 	"\x11SigningKeyRequest\x12\x19\n" +
 	"\bapp_name\x18\x01 \x01(\tR\aappNameJ\x04\b\x02\x10\x06\";\n" +
 	"\x12SigningKeyResponse\x12\x1f\n" +
-	"\vsigning_key\x18\x01 \x01(\fR\n" +
+	"\vsigning_key\x18\x01 \x01(\tR\n" +
 	"signingKeyJ\x04\b\x02\x10\x062\xb4\x01\n" +
 	"\x04Auth\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +

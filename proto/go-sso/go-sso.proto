@@ -24,7 +24,7 @@ message RegisterResponse {
 message LoginRequest {
   string email = 1;
   string password = 2;
-  int32 app_id = 3;  // ID of the application requesting the login.
+  string appName = 3;  // App name of the application requesting the login.
   reserved 4 to 5;
 }
 
@@ -39,6 +39,6 @@ message SigningKeyRequest {
 }
 
 message SigningKeyResponse {
-	bytes signing_key = 1;
+	string signing_key = 1;
 	reserved 2 to 5;
 }
