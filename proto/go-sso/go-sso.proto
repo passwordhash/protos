@@ -39,6 +39,6 @@ message SigningKeyRequest {
 }
 
 message SigningKeyResponse {
-	string signing_key = 1;
+	bytes signing_key = 1;
 	reserved 2 to 5;
 }

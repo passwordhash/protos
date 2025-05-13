@@ -267,7 +267,7 @@ func (x *SigningKeyRequest) GetAppName() string {
 
 type SigningKeyResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	SigningKey    string                 `protobuf:"bytes,1,opt,name=signing_key,json=signingKey,proto3" json:"signing_key,omitempty"`
+	SigningKey    []byte                 `protobuf:"bytes,1,opt,name=signing_key,json=signingKey,proto3" json:"signing_key,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -302,11 +302,11 @@ func (*SigningKeyResponse) Descriptor() ([]byte, []int) {
 	return file_go_sso_go_sso_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *SigningKeyResponse) GetSigningKey() string {
+func (x *SigningKeyResponse) GetSigningKey() []byte {
 	if x != nil {
 		return x.SigningKey
 	}
-	return ""
+	return nil
 }
 
 var File_go_sso_go_sso_proto protoreflect.FileDescriptor
@@ -328,7 +328,7 @@ const file_go_sso_go_sso_proto_rawDesc = "" +
 	"\x11SigningKeyRequest\x12\x19\n" +
 	"\bapp_name\x18\x01 \x01(\tR\aappNameJ\x04\b\x02\x10\x06\";\n" +
 	"\x12SigningKeyResponse\x12\x1f\n" +
-	"\vsigning_key\x18\x01 \x01(\tR\n" +
+	"\vsigning_key\x18\x01 \x01(\fR\n" +
 	"signingKeyJ\x04\b\x02\x10\x062\xb4\x01\n" +
 	"\x04Auth\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
