@@ -1,7 +1,14 @@
-
 version: "3"
 
 tasks:
+    mock:
+        desc: Генерация моков
+        cmds:
+            - |
+                mockgen -source=./gen/go/go-sso/go-sso_grpc.pb.go \
+                        -destination=./mocks/mock_auth_client.go \
+                        -package=mocks \
+                        AuthClient
     generate:
         aliases:
             - gen
